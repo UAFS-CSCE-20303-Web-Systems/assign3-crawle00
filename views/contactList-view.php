@@ -22,6 +22,8 @@
                         <th>ContactID</th>
                         <th>User Name</th>
                         <th>Email</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +34,15 @@
                         <td><?php echo $contacts[$index]->contactID ?></td>
                         <td><?php echo $contacts[$index]->username ?></td>
                         <td><?php echo $contacts[$index]->email ?></td>
+                        <td>
+                        <!-- Add link to contactUpdate -->
+                        </td>
+                        <td>
+                            <form action="contactDeleteController.php" method="POST">
+                                <input type="hidden" name="contactID" value="<?php echo $contacts[$index]->contactID ?>">
+                                <button type="submit" class="btn btn-small btn-danger" onClick="return confirm('Are you sure you want to delete this contact?');">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php
                         }
