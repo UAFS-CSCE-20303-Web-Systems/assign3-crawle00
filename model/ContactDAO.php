@@ -36,7 +36,23 @@
             return $contacts;
         }
 
+        public function updateContact($contactID, $username, $email) {
+            $connection = $this->getConnection();
+            $stmt = $connection->prepare("UPDATE cs2033 SET username = ?, email = ? WHERE contactID = ?");
+            $stmt->bind_param("ssi", $username, $email, $contactID);
+            $stmt->execute();
+            $stmt->close();
+            $connection->close();            
+        }
 
+        public function deleteContact($contactID) {
+            $connection = $this->getConnection();
+            $stmt = $connection->prepare("DELETE FROM cs2033 WHERE contactID = ?");
+            $stmt->bind_param("i", $contactID);
+            $stmt->execute();
+            $stmt->close();
+            $connection->close();
+        } 
 
     }
 ?>
